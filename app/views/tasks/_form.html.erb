@@ -34,9 +34,9 @@
     <%= t.label :due_date %>:
   </div>
   <div class="edit_form_detail">    
-    <%# t.text_field :due_date, :id => 'datepicker', :value => @task.due_date.strftime("%m/%d/%Y") %>
-    <%= t.text_field :due_date, id: 'datepicker' %>
-    <%= t.hidden_field :due_date, id: 'datepicker_db_format' %>
+    <%# t.text_field :due_date, :id => "datepicker", :value => @task.due_date.strftime("%m/%d/%Y") %>
+    <%= t.text_field :due_date, id: "datepicker" %>
+    <%= t.hidden_field :due_date, id: "datepicker_db_format" %>
   </div>
 
   <div class="edit_form_label">
@@ -65,4 +65,4 @@
     </div>
 <% end %>
 
-<%= button_to 'Cancel', tasks_url, :method => 'get' %>
+<%= button_to "Cancel", tasks_url, :method => "get" %>

@@ -1,11 +1,11 @@
 <span id="notice"><%= notice %></span>
 
 <div id="task">
-	<%= render 'task_show', :item => @task %>
+	<%= render "task_show", :item => @task %>
 </div>
 
 <div id="subtask">
-  <%= render 'subtasks_list' %>
+  <%= render "subtasks_list" %>
 </div>
 
 <%= link_to "Return to Tasks", tasks_url %>

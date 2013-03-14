@@ -1,22 +1,37 @@
 $(function() {
 
   // Date Picker
-	$('#datepicker').datepicker({
+	$("#datepicker").datepicker({
 		altField: "#datepicker_db_format",
 		altFormat: "yy-mm-d"
 	});
 
   // Slide Task Details
-  $('.task_title').click(function() {
-    var item_id = $(this).attr('id');
+  $(".task_title").click(function() {
+    var item_id = $(this).attr("id");
 
-    $('.task_details#'+item_id ).toggle( "slide", {direction: "right"}, 800 );
+    $(".task_details#"+item_id).toggle( "slide", {direction: "right"}, 800);
+    return false;
+  });
+
+  $(".task_details #cancel_link").click(function() {
+    $(".task_details").hide( "slide", {direction: "right"}, 800);
     return false;
   });
 
   // New Task Form
-  $('#new_link').click(function() {
-    $('.new_task_container').show( "slide", {direction: "right"}, 800 );
+  $("#new_link").click(function() {
+    $(".new_task_container").show( "slide", {direction: "right"}, 800 );
+    $("#new_link").css("visibility", "hidden");
     return false;
   });
+  
+  $(".new_task_container #cancel_link").click(function() {
+    $(".new_task_container").hide( "slide", {direction: "right"}, 800 );
+    $("#new_task")[0].reset();
+    $("#new_link").css("visibility", "visible");
+    return false;
+  });
+
+
 });

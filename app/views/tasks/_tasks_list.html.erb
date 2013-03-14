@@ -1,5 +1,5 @@
 <tr>
-    <%#= form_tag item, :method => 'put' do %>
+    <%#= form_tag item, :method => "put" do %>
       <%#= select_tag :status, options_for_select(Task::STATUS_LEVELS, item.status), :name => "#{class_name(item)}[status]", :onchange => "this.form.submit();" %>
     <%# end %>
   <td class="priority">
@@ -52,5 +52,5 @@
 <% end %>
 
 <div id="<%= item.id %>" class="task_details ui-widget-content ui-corner-all">
-  <%= render 'task_show', :item => item %>
+  <%= render "task_show", :item => item %>
 </div>

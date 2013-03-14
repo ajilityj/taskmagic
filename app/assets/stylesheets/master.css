@@ -87,10 +87,10 @@ a:focus {
 #task_title,
 #task_description {
   width: 100%;
-
-      -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+  height: auto;
+  box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 #task_description {
   height: 100px;

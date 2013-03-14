@@ -41,4 +41,7 @@
     <span>Description:</span>
     <%= item.description %>
   </div>
+
+  <%= link_to "Delete Task", item, method: :delete, class: "btn" %>
+  <%= link_to "Cancel", "#", id:"cancel_link" %>
 </div>
