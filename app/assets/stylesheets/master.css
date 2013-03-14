@@ -1,0 +1,217 @@
+/*
+  green- #1DD83C
+  blue- #00163F
+  grey- #A5A7AF
+*/
+
+body {
+  color: #00163F;
+  font-size: 16px;
+  font-family: 'PT Sans', sans-serif;
+  background: url(tiny_grid.png) repeat;
+}
+select,
+select:focus {
+  text-transform: capitalize;
+  outline: none;
+  width: auto;
+}
+table {
+  position: relative;
+  z-index: 1;
+}
+h2,
+h3 {
+  background: #00163F;
+  color: #1DD83C;
+  padding: 0 10px;
+  margin: 20px 0 0;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 200;
+}
+h3 {
+  margin: 0 0 10px;
+  border-radius: 10px 10px 0 0;
+}
+a {
+  color: #00163F;
+  outline: none;
+}
+a:hover,
+a:focus {
+  color: #1DD83C;
+  outline: none;
+  text-decoration: none;
+}
+
+/***********/
+/* Nav Bar */
+/***********/
+.navbar-inner {
+  color: #fff;
+  border-width: 0;
+  border-radius: 0;
+  background: #00163F;
+}
+.navbar .nav > li > a {
+  color: #fff;
+  text-shadow: none;
+}
+.navbar .nav > li > a:focus, 
+.navbar .nav > li > a:hover {
+  color: #A5A7AF;
+}
+.navbar .brand,
+.navbar .brand:hover {
+  color: #1DD83C;
+  text-shadow: none;
+}
+
+
+/*************/
+/* Task List */
+/*************/
+.table {
+  margin-bottom: 50px;
+}
+.priority {
+  width: 25px;
+}
+.assignee {
+  width: 93px;
+}
+.due_date {
+  width: 63px;
+}
+#task_title,
+#task_description {
+  width: 100%;
+
+      -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+#task_description {
+  height: 100px;
+}
+/****************/
+/* Task Details */
+/****************/
+.ui-widget-content {
+/*    background: url("images/ui-bg_flat_75_ffffff_40x100.png") repeat-x scroll 50% 50% #FFFFFF;
+    border: 1px solid #AAAAAA;
+    color: #222222;*/
+}
+.new_task_container,
+.task_details {
+  display: none;
+  width: 50%;
+  min-width: 360px;
+  height: 100%;
+  position: absolute;
+  right: 10px;
+  z-index: 9999;
+  border-radius: 10px !important;
+}
+.new_task_container .navbar-inner,
+.task_details .navbar-inner {
+    border-radius: 10px 10px 0 0;
+}
+.new_task_container #content,
+.task_details #content {
+  padding: 0 20px 10px;
+}
+
+/*** Priority Badges ***/
+.badge-1 { /* urgent */
+    background-color: #B94A48;
+}
+.badge-2 { /* high */
+    background-color: #F89406;
+}
+.badge-3 { /* normal */
+    background-color: #468847;
+}
+.badge-4 { /* low */
+    background-color: #3A87AD;
+}
+.badge-5 { /* lowest */
+    background-color: #999999;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: #c0c0c0;
+}
+
+/* Form Fields */
+#datepicker {
+  width: 115px;
+}
+
+.field_with_errors {
+  color: #d00; 
+  display: inline;
+}
+#error_explanation {
+  width: 550px;
+  padding: 10px;
+  color: #000;
+  background-color: #d00;
+}
+#error_explanation ul {
+  background-color: #fff;
+  padding: 10px;
+  color: #d00;
+}
+
+.platform_label {
+  border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+  box-shadow: 0px 1px 2px 0px rgba(0,0,0,1);
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,1);
+  display: inline-block;
+  font-size: 14px;
+  height: 20px;
+  width: 76px;
+  text-align: center;
+  margin: 0 15px;
+}
+.platform_label.platform2 { /* Shure.com */
+  background-color: #1DD83C;
+  color: #00163F;
+}
+.platform_label.platform3 { /* Blog */
+  background-color: #A5A7AF;
+  color: #1DD83C;
+}
+.platform_label.platform4 { /* Shopatron */
+  background-color: #00163F;
+  color: #1DD83C;
+}
+.platform_label.platform6 { /* Brightcove */
+  background-color: #00163F;
+  color: #A5A7AF;
+}
+.platform_label.platform13 { /* EmailDirect */
+  background-color: #A5A7AF;
+  color: #00163F;
+}
+.platform_label.platform14 { /*  */
+  background-color: #1DD83C;
+  color: #A5A7AF;
+}
+
+.urgent,
+.urgent a {color: #d00;}
+.high,
+.high a {color: #FF5C5C;}
+.normal,
+.normal a {color: #00163F;}
+.low,
+.low a {color: #6AA980;}
+.lowest,
+.lowest a {color: #C6BA7E;}

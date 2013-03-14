@@ -1,0 +1,56 @@
+<tr>
+    <%#= form_tag item, :method => 'put' do %>
+      <%#= select_tag :status, options_for_select(Task::STATUS_LEVELS, item.status), :name => "#{class_name(item)}[status]", :onchange => "this.form.submit();" %>
+    <%# end %>
+  <td class="priority">
+    <span class="badge badge-<%= item.priority %>"><%= item.priority %></span>
+  </td>
+  <td class="title">
+    <% if item.class == Subtask %>
+      <%= link_to "##{item.task_id}-#{item.id}: #{item.title}", item %>              
+    <% else %>
+      <%= link_to "##{item.id}: #{item.title}", item, class: "task_title", id: "#{item.id}" %>        
+    <% end %>
+    <% if item.platform != nil %>        
+      <div class="platform_label platform<%= item.platform_id %>">
+        <%= item.platform.name %>
+      </div>
+    <% end %>
+  </td>
+  <td class="assignee">
+    <% if item.user != nil %>
+      <%= item.user.name %>
+    <% end %>
+  </td>
+  <td class="due_date">
+    <% if item.due_date != nil %>
+      <%= item.due_date.strftime("%-m/%-d/%y") %>
+    <% end %>
+  </td>
+</tr>
+<% if item.class == Task %>
+  <% if item.subtasks.present? %>
+    <% item.subtasks.each do |subitem| %>
+      <tr>
+        <td></td>
+        <td class="title">
+          <span class="badge badge-<%= item.priority %>"><%= item.priority %></span>
+          <%= link_to " ##{subitem.task_id}-#{subitem.id}: #{subitem.title}", subitem %>              
+          <div class="platform_label platform<%= subitem.platform_id %>">
+            <%= subitem.platform.name %>
+          </div>
+        </td>
+        <td class="assignee"><%= subitem.user.name %></td>
+        <td class="due_date">
+          <% if subitem.due_date != nil %>
+            <%= subitem.due_date.strftime("%-m/%-d/%y") %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+<% end %>
+
+<div id="<%= item.id %>" class="task_details ui-widget-content ui-corner-all">
+  <%= render 'task_show', :item => item %>
+</div>

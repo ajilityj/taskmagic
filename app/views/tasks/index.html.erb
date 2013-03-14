@@ -1,0 +1,21 @@
+<%= link_to "New Task", new_task_url, id: "new_link", remote: true %>
+
+<div class="new_task_container ui-widget-content ui-corner-all">
+  <h3>New Task</h3>
+  <div id="content">
+    <%= render 'form_ajax', item: @task %>
+  </div>
+</div>
+
+<% Task::STATUS_LEVELS.each do |status| %>
+  <h2><%= status.capitalize %></h2>
+  <table class="table" id="<%= status %>">
+    <tbody>
+      <% @tasks.each do |task| %>
+        <% if task.status == status %>
+          <%= render 'tasks_list', item: task %>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>  
+<% end %>

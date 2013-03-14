@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Platform:</b>
+  <%= @platform.name %>
+</p>
+
+<p>
+  <b>Platform Tasks:</b>
+  <ul>
+    <% @platform.tasks.each do |task| %>
+      <li><%= task.title %></li>
+    <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Edit', edit_platform_path(@platform) %> |
+<%= link_to 'Back', platforms_path %>

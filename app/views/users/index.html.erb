@@ -1,0 +1,11 @@
+<h2>Users</h2>
+
+<% @users.each do |user| %>
+  <p><%= link_to user.name, user %>
+  [<%= link_to 'Edit', edit_user_path(user) %> | 
+  <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>]</p>
+<% end %>
+
+<br />
+
+<%= button_to 'New User', new_user_path, :method => 'get' %>

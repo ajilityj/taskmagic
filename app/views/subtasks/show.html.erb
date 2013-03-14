@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+
+<div id="subtask">
+  <%= render 'tasks/task_show', :item => @subtask %>
+</div>
+
+<%= link_to "Return to Task", task_url(@subtask.task_id) %>

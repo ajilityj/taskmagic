@@ -1,0 +1,7 @@
+<h2>Subtasks</h2>
+
+<% if @task.subtasks.present? %>
+  <%= render 'tasks/tasks_list', items: @task.subtasks %>
+<% end %>
+
+<%= link_to "Add Subtask", new_subtask_url(:task_id => @task.id) %>

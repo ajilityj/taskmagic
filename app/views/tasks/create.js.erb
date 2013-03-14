@@ -1,0 +1,2 @@
+$('.new_task_container').hide( "slide", {direction: "right"}, 800 );
+$('.table#<%= @task.status %>').prepend('<%= j render("tasks_list", item: @task) %>');

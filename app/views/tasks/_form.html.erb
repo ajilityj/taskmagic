@@ -1,0 +1,68 @@
+<%= form_for @task do |t| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="edit_form_label">
+    <%= t.label :platform_id %>:
+  </div>
+  <div class="edit_form_detail">     
+    <%= t.collection_select :platform_id, Platform.all, :id, :name, include_blank: true %>
+  </div>
+
+  <div class="edit_form_label">
+    <%= t.label :title, "Title:" %>
+  </div>
+  <div class="edit_form_title"> 
+    <%= t.text_field :title %>
+  </div>
+
+  <div class="edit_form_label" style="clear: both;">
+    <%= t.label :priority, "Priority:" %>
+  </div>
+  <div class="edit_form_detail">
+    <%= t.select :priority, Task::PRIORITY_LEVELS %>
+  </div>
+
+  <div class="edit_form_label">
+    <%= t.label :due_date %>:
+  </div>
+  <div class="edit_form_detail">    
+    <%# t.text_field :due_date, :id => 'datepicker', :value => @task.due_date.strftime("%m/%d/%Y") %>
+    <%= t.text_field :due_date, id: 'datepicker' %>
+    <%= t.hidden_field :due_date, id: 'datepicker_db_format' %>
+  </div>
+
+  <div class="edit_form_label">
+    <%= t.label :status %>:
+  </div>
+  <div class="edit_form_detail">    
+    <%= t.select :status, Task::STATUS_LEVELS %>
+  </div>
+
+  <div class="edit_form_label">
+    <%= t.label :user_id %>:
+  </div>
+  <div class="edit_form_detail">     
+    <%= t.collection_select :user_id, User.all, :id, :name, include_blank: true %>
+  </div>
+
+  <div class="edit_form_label">
+    <%= t.label :description %>:
+  </div>
+  <div class="edit_form_description">
+    <%= t.text_area :description %>
+  </div>
+
+    <div class="edit_form_action">
+      <%= t.submit %>
+    </div>
+<% end %>
+
+<%= button_to 'Cancel', tasks_url, :method => 'get' %>

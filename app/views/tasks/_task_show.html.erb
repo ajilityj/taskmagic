@@ -1,0 +1,44 @@
+<h3>
+  <% if item.class == Subtask %>
+    #<%= item.task_id %>-<%= item.id %>: <%= item.title %>
+  <% else %>
+    #<%= item.id %>: <%= item.title %>
+  <% end %>
+</h3>
+
+<div id="content">
+
+  <div class="form_detail">
+    <span>Platform:</span>
+    <% if item.platform != nil %>
+        <%= item.platform.name %>
+    <% end %>
+  </div>
+
+  <div class="form_detail">
+    <span>Priority:</span>
+    <%= item.priority_name.capitalize %>
+  </div>
+
+  <div class="form_detail">
+    <span>Assignee:</span>
+    <%= item.user.name %>
+  </div>
+
+  <div class="form_detail">
+    <span>Status:</span>
+    <%= item.status.capitalize %>
+  </div>
+
+  <div class="form_detail">
+    <span>Due Date:</span>
+    <% if item.due_date.present? %>
+      <%= item.due_date.strftime("%A, %B %-d, %Y") %>
+    <% end %>
+  </div>
+
+  <div class="form_detail">
+    <span>Description:</span>
+    <%= item.description %>
+  </div>
+</div>

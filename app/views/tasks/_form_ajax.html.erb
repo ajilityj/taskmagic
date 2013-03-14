@@ -1,0 +1,32 @@
+<%= form_for @task, remote: true do |t| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= t.collection_select :user_id, User.all, :id, :name, prompt: 'Assignee', required: true %>
+  
+  <%= t.collection_select :platform_id, Platform.all, :id, :name, prompt: 'Platform' %>
+
+  <%= t.select :priority, Task::PRIORITY_LEVELS %>
+
+  <%= t.select :status, Task::STATUS_LEVELS, prompt: 'Status' %>
+
+  <%# t.text_field :due_date, :id => 'datepicker', :value => @task.due_date.strftime("%m/%d/%Y") %>
+  <%= t.text_field :due_date, id: 'datepicker', placeholder: 'Due Date' %>
+  <%= t.hidden_field :due_date, id: 'datepicker_db_format' %>
+  
+  <%= t.text_field :title, placeholder: 'Title' %>
+  
+  <%= t.text_area :description, placeholder: 'Task Description' %>
+
+  <%= t.submit %>
+
+<% end %>
+
+
