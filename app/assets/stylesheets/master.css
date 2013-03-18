@@ -75,6 +75,15 @@ a:focus {
 .table {
   margin-bottom: 50px;
 }
+.table#closed,
+.table#closed a {
+  color: #ccc;
+}
+.table#closed .badge,
+.table#closed .platform_label {
+  background: #ccc;
+  color: #fff;
+}
 .priority {
   width: 25px;
 }
@@ -166,52 +175,68 @@ a:focus {
   color: #d00;
 }
 
-.platform_label {
-  border-radius: 50px;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-  box-shadow: 0px 1px 2px 0px rgba(0,0,0,1);
-    -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,1);
-    -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,1);
-  display: inline-block;
-  font-size: 14px;
-  height: 20px;
-  width: 76px;
+
+/************/
+/* Calendar */
+/************/
+.calendar {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 10px 0;
+}
+.calendar a {
+  color: #1DD83C;  
+}
+.calendar td, 
+.calendar th {
+  padding: 6px;
+  border: 1px solid #999;
+}
+.calendar th {
+  background: #DDD;
+  color: #666;
   text-align: center;
-  margin: 0 15px;
+  width: 14.2857142857143%;
 }
-.platform_label.platform2 { /* Shure.com */
-  background-color: #1DD83C;
-  color: #00163F;
+.calendar td {
+  background: #FFF;
+  color: #777;
+  height: 80px;
+  vertical-align: top;
+  font-size: 16px;
 }
-.platform_label.platform3 { /* Blog */
-  background-color: #A5A7AF;
-  color: #1DD83C;
+.calendar .notmonth,
+.calendar .notmonth a { 
+  color: #CCC;
 }
-.platform_label.platform4 { /* Shopatron */
-  background-color: #00163F;
-  color: #1DD83C;
+.calendar .today { 
+  background-color: #D7F2FF; 
 }
-.platform_label.platform6 { /* Brightcove */
-  background-color: #00163F;
-  color: #A5A7AF;
+.calendar ul {
+  font-size: 11px;
+  list-style-type: none;
+  background: #00163F;
+  margin: 0;
+  text-align: center;
+  border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;  
 }
-.platform_label.platform13 { /* EmailDirect */
-  background-color: #A5A7AF;
-  color: #00163F;
+.calendar li {
+  line-height: 15px;
 }
-.platform_label.platform14 { /*  */
-  background-color: #1DD83C;
-  color: #A5A7AF;
+#month {
+  text-align: center;
+}
+#month a {
+  text-decoration: none;
+  padding: 0 10px;
+  color: #1DD83C;  
 }
 
-.urgent,
-.urgent a {color: #d00;}
-.high,
-.high a {color: #FF5C5C;}
-.normal,
-.normal a {color: #00163F;}
-.low,
-.low a {color: #6AA980;}
-.lowest,
-.lowest a {color: #C6BA7E;}
+
+/*
+  green- #1DD83C
+  blue- #00163F
+  grey- #A5A7AF
+*/

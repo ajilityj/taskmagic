@@ -9,12 +9,3 @@
 </div>
 
 <%= link_to "Return to Tasks", tasks_url %>
-
-
-<p class="timestamp">
-  <% if @task.created_at != @task.updated_at %>
-    Updated at: <%= @task.updated_at.strftime("%A, %B %-d, %Y @ %I:%M%p") %>
-  <% else %>
-    Created at: <%= @task.created_at.strftime("%A, %B %-d, %Y @ %I:%M%p") %> 
-  <% end %>
-</p>

@@ -1,8 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  def authorize
-    redirect_to login_url, alert: "Not authorized" if current_user.nil?
+  def require_login
+    redirect_to login_url, alert: "You must be logged in to access this section." if current_user.nil?
+  end
+
+  def admin_only
+    redirect_to root_url, alert: "Not authorized" if !admin_user
   end
 
   private

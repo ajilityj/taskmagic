@@ -1,6 +1,7 @@
 class SubtasksController < ApplicationController
 
-  before_filter :authorize
+  before_filter :require_login
+  before_filter :admin_only, :only => [:index, :destoy]
 
   def index
     @subtasks = Subtask.all

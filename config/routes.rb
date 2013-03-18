@@ -8,7 +8,9 @@ TaskMagic::Application.routes.draw do
   resources :users
 
   root to: 'tasks#index'
-  resources :tasks
+  resources :tasks do
+    get 'calendar', :on => :collection
+  end
   resources :subtasks
   resources :platforms
 end

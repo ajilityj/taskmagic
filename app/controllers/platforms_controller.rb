@@ -1,6 +1,7 @@
 class PlatformsController < ApplicationController
 
-  before_filter :authorize
+  before_filter :require_login
+  before_filter :admin_only
 
   def index
     @platforms = Platform.all

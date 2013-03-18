@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 
-  before_filter :authorize
+  before_filter :require_login
   
   def index
     @tasks = Task.order('priority asc, due_date desc').all
@@ -36,7 +36,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       format.js
-      format.html {render 'edit'}
+      format.html
     end 
   end
   
@@ -44,15 +44,28 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     
     if @task.update_attributes(params[:task])
-      redirect_to task_url(@task), notice: 'Task was successfully updated.'
+      respond_to do |format|
+        format.js
+        format.html {redirect_to tasks_url}
+      end
     else
       render 'show'
     end
   end
   
   def destroy
-    @task = Task.find(params[:id])
-    @task.destroy
-    redirect_to tasks_url
+    @task = Task.destroy(params[:id])
+
+    respond_to do |format|
+      format.js
+      format.html {redirect_to tasks_url}
+    end
   end
+
+  def calendar
+    @tasks = Task.all
+    @tasks_by_date = @tasks.group_by(&:due_date)
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
+  end
+
 end

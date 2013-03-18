@@ -1,4 +1,4 @@
-<tr>
+<tr id="item_<%= item.id %>">
     <%#= form_tag item, :method => "put" do %>
       <%#= select_tag :status, options_for_select(Task::STATUS_LEVELS, item.status), :name => "#{class_name(item)}[status]", :onchange => "this.form.submit();" %>
     <%# end %>
@@ -6,15 +6,10 @@
     <span class="badge badge-<%= item.priority %>"><%= item.priority %></span>
   </td>
   <td class="title">
-    <% if item.class == Subtask %>
-      <%= link_to "##{item.task_id}-#{item.id}: #{item.title}", item %>              
+    <% if item.platform != nil %>
+      <%= link_to "##{item.id} - #{item.platform.name}: #{item.title}", item, class: "task_title", id: "#{item.id}" %>        
     <% else %>
-      <%= link_to "##{item.id}: #{item.title}", item, class: "task_title", id: "#{item.id}" %>        
-    <% end %>
-    <% if item.platform != nil %>        
-      <div class="platform_label platform<%= item.platform_id %>">
-        <%= item.platform.name %>
-      </div>
+      <%= link_to "##{item.id} - #{item.title}", item, class: "task_title", id: "#{item.id}" %>    
     <% end %>
   </td>
   <td class="assignee">
@@ -35,7 +30,7 @@
         <td></td>
         <td class="title">
           <span class="badge badge-<%= item.priority %>"><%= item.priority %></span>
-          <%= link_to " ##{subitem.task_id}-#{subitem.id}: #{subitem.title}", subitem %>              
+          <%= link_to " ##{subitem.task_id}-#{subitem.id}: #{subitem.title}", subitem, id: "#{subitem.id}" %>
           <div class="platform_label platform<%= subitem.platform_id %>">
             <%= subitem.platform.name %>
           </div>

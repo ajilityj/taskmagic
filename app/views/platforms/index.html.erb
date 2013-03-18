@@ -1,14 +1,9 @@
-<h1>Listing platforms</h1>
-
 <h2>Platform</h2>
 
+<ul>
+  <% @platforms.each do |platform| %>
+    <li><%= link_to platform.name, platform %></li>
+  <% end %>
+</ul>
 
-<% @platforms.each do |platform| %>
-  <p><%= link_to platform.name, platform %>
-  [<%= link_to 'Edit', edit_platform_path(platform) %> | 
-  <%= link_to 'Destroy', platform, method: :delete, data: { confirm: 'Are you sure?' } %>]</p>
-<% end %>
-
-<br />
-
-<%= button_to 'New Platform', new_platform_path, :method => 'get' %>
+<%= link_to 'New Platform', new_platform_path, class: 'btn' %>

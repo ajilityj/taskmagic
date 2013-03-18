@@ -5,7 +5,7 @@ $(function() {
 		altField: "#datepicker_db_format",
 		altFormat: "yy-mm-d"
 	});
-
+  
   // Slide Task Details
   $(".task_title").click(function() {
     var item_id = $(this).attr("id");

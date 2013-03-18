@@ -1,6 +1,6 @@
 <h3>
   <% if item.class == Subtask %>
-    #<%= item.task_id %>-<%= item.id %>: <%= item.title %>
+    #<%= item.task_id %>-<%= item.id %>: <%=  item.title %>
   <% else %>
     #<%= item.id %>: <%= item.title %>
   <% end %>
@@ -42,6 +42,43 @@
     <%= item.description %>
   </div>
 
-  <%= link_to "Delete Task", item, method: :delete, class: "btn" %>
-  <%= link_to "Cancel", "#", id:"cancel_link" %>
+  <%= link_to "Edit Task", edit_item_url(item), remote: true, class: "btn", id: "edit_link" %>
+  <% if admin_user %>
+    <%= link_to "Delete Task", item, method: :delete, remote:true, class: "btn" %>
+  <% end %>
+  <%= link_to "Cancel", tasks_url, id:"cancel_link" %>
+
+  <p class="timestamp">
+    <% if item.created_at != item.updated_at %>
+      Updated at: <%= item.updated_at.strftime("%A, %B %-d, %Y @ %I:%M%p") %>
+    <% else %>
+      Created at: <%= item.created_at.strftime("%A, %B %-d, %Y @ %I:%M%p") %> 
+    <% end %>
+  </p>
+
+  <%#= render 'form_ajax', item: item %>
+
+  <%#= form_for item, remote: true do |t| %>
+    <%#= t.collection_select :user_id, User.all, :id, :name, prompt: "Assignee" %>
+
+    <%#= t.collection_select :platform_id, Platform.all, :id, :name, prompt: "Platform" %>
+
+    <%#= t.select :priority, Task::PRIORITY_LEVELS %>
+
+    <%#= t.select :status, Task::STATUS_LEVELS, prompt: "Status" %>
+
+    <%#= t.text_field :due_date, id: "datepicker", placeholder: "Due Date", :value => item.due_date.strftime("%m/%d/%Y") %>
+    <%#= t.hidden_field :due_date, id: "datepicker_db_format" %>
+    
+    <%#= t.text_field :title, placeholder: "Title" %>
+    
+    <%#= t.text_area :description, placeholder: "Task Description" %>
+
+    <%#= t.submit %>
+  <%# end %>
+
+
+
+
+
 </div>
