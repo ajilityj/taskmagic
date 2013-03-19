@@ -1,5 +1,2 @@
 
-$('#item_<%= item.id %>').replaceWith("<%= j render('tasks_list', item: @task) %>");
-
-
-// $('#idea_description').replaceWith('<%= j(render('idea_partial', idea: @idea)) %>')
+$('#item_<%= @task.id %>').replaceWith("<%= j render('tasks_list', item: @task) %>");
