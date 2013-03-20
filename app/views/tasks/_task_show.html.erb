@@ -10,9 +10,7 @@
 
   <div class="form_detail">
     <span>Platform:</span>
-    <% if item.platform != nil %>
-        <%= item.platform.name %>
-    <% end %>
+        <%= item.platform.try(:name) %>
   </div>
 
   <div class="form_detail">
@@ -42,7 +40,7 @@
     <%= item.description %>
   </div>
 
-  <%= link_to "Edit Task", edit_item_url(item), remote: true, class: "btn", id: "edit_link" %>
+  <%= link_to "Edit Task", edit_item_url(item), class: "btn", id: "edit_link" %>
   <% if admin_user %>
     <%= link_to "Delete Task", item, method: :delete, remote: true, class: "btn" %>
   <% end %>

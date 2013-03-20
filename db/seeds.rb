@@ -41,37 +41,14 @@ users.each do |user_hash|
   u.save
 end
 
-tasks = [
-  {status: "open"},
-  {status: "open"},
-  {status: "open"},
-  {status: "open"},
-  {status: "open"},
-  {status: "pending"},
-  {status: "pending"},
-  {status: "pending"},
-  {status: "pending"},
-  {status: "pending"},
-  {status: "postponed"},
-  {status: "postponed"},
-  {status: "postponed"},
-  {status: "postponed"},
-  {status: "postponed"},   
-  {status: "closed"},
-  {status: "closed"},
-  {status: "closed"},
-  {status: "closed"},
-  {status: "closed"}
-]
-
 Task.destroy_all
 tasks.each do |task_hash|
   t = Task.new
   t.title = "Random Task ##{rand(1000)}"
   t.description = ""
-  t.due_date = rand(1.years).from_now
+  t.due_date = rand(6.months).from_now
   t.priority = rand(1..5)
-  t.status = task_hash[:status]
+  t.status = Task::STATUS_LEVELS.sample(1).first
   t.platform_id = Platform.all.sample(1).first.id
   t.user_id = User.all.sample(1).first.id
   t.save

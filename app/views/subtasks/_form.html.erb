@@ -50,8 +50,8 @@
     <%= f.label :due_date %>:
   </div>
   <div class="edit_form_detail"> 
-    <%= f.text_field :due_date, :id => 'datepicker' %>
-    <%= f.hidden_field :due_date, :id => 'datepicker_db_format' %>
+    <%= f.text_field :due_date, class: 'datepicker' %>
+    <%= f.hidden_field :due_date, class: 'datepicker_db_format' %>
   </div>
 
   <div class="edit_form_label" style="clear: both;">

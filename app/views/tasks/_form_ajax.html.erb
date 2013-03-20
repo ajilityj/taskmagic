@@ -9,6 +9,8 @@
     </div>
   <% end %>
 
+  <h3><%= t.text_field :title, required: 'required', placeholder: "Title" %></h3>
+
   <%= t.collection_select :user_id, User.all, :id, :name, prompt: "Assignee" %>
   
   <%= t.collection_select :platform_id, Platform.all, :id, :name, prompt: "Platform", include_blank: true %>
@@ -17,15 +19,15 @@
 
   <%= t.select :status, Task::STATUS_LEVELS, prompt: "Status" %>
 
-  <%# t.text_field :due_date, :id => "datepicker", :value => @task.due_date.strftime("%m/%d/%Y") %>
-  <%= t.text_field :due_date, id: "datepicker", placeholder: "Due Date" %>
-  <%= t.hidden_field :due_date, id: "datepicker_db_format" %>
+  <%= t.text_field :due_date, class: "datepicker", :value => task.due_date.try(:strftime, "%m/%d/%Y") %>
+  <%#= t.text_field :due_date, class: "datepicker", placeholder: "Due Date" %>
+  <%= t.hidden_field :due_date, class: "datepicker_db_format" %>
 
-  <%= t.text_field :title, placeholder: "Title" %>
+
   
   <%= t.text_area :description, placeholder: "Task Description" %>
 
   <%= t.submit %>
-  <%= link_to "Cancel", "#", id: "cancel_link", remote: true %>
+  <%= link_to "Cancel", "#", id: "cancel_link" %>
 <% end %>
 

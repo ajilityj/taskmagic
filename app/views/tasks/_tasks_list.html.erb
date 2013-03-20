@@ -6,21 +6,13 @@
     <span class="badge badge-<%= item.priority %>"><%= item.priority %></span>
   </td>
   <td class="title">
-    <% if item.platform != nil %>
-      <%= link_to "##{item.id} - #{item.platform.name}: #{item.title}", item, class: "task_title", id: "#{item.id}" %>        
-    <% else %>
-      <%= link_to "##{item.id} - #{item.title}", item, class: "task_title", id: "#{item.id}" %>    
-    <% end %>
+    <%= link_to "##{item.id} - #{item.platform.try(:name)}: #{item.title}", "#", class: "task_title", id: "#{item.id}" %>        
   </td>
   <td class="assignee">
-    <% if item.user != nil %>
-      <%= item.user.name %>
-    <% end %>
+    <%= item.user.name %>
   </td>
   <td class="due_date">
-    <% if item.due_date != nil %>
-      <%= item.due_date.strftime("%-m/%-d/%y") %>
-    <% end %>
+    <%= item.due_date.try(:strftime, "%-m/%-d/%y") %>
   </td>
 </tr>
 <% if item.class == Task %>
@@ -30,16 +22,11 @@
         <td></td>
         <td class="title">
           <span class="badge badge-<%= item.priority %>"><%= item.priority %></span>
-          <%= link_to " ##{subitem.task_id}-#{subitem.id}: #{subitem.title}", subitem, id: "#{subitem.id}" %>
-          <div class="platform_label platform<%= subitem.platform_id %>">
-            <%= subitem.platform.name %>
-          </div>
+          <%= link_to " ##{subitem.task_id}-#{subitem.id} - #{subitem.platform.try(:name)}: #{subitem.title}", subitem, id: "#{subitem.id}" %>
         </td>
         <td class="assignee"><%= subitem.user.name %></td>
         <td class="due_date">
-          <% if subitem.due_date != nil %>
-            <%= subitem.due_date.strftime("%-m/%-d/%y") %>
-          <% end %>
+          <%= subitem.due_date.try(:strftime, "%-m/%-d/%y") %>
         </td>
       </tr>
     <% end %>

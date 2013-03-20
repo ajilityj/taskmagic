@@ -17,18 +17,24 @@ function hideNewTask() {
 $(function() {
 
   // Date Picker
-	$("#datepicker").datepicker({
-		altField: "#datepicker_db_format",
+	$(".datepicker").datepicker({
+		altField: ".datepicker_db_format",
 		altFormat: "yy-mm-d"
 	});
   
   // Slide Task Details
   $(".container").on("click", ".task_title", function() {
-    var item_id = $(this).attr("id");
-    hideTaskDetails();
-    hideNewTask();
-    showTaskDetails(item_id);
-    return false;
+      var item_id = $(this).attr("id");
+
+      if ($(".task_details#"+item_id).is(":visible")) {
+        hideTaskDetails();
+      }
+      else {
+        hideTaskDetails();
+        hideNewTask();
+        showTaskDetails(item_id);
+      }
+      return false;
   });
 
   $(".task_details #cancel_link").click(function() {
@@ -56,10 +62,10 @@ $(function() {
   });
 
   // Prevent Task Close when Clicking on Details
-  $('.task_details').click(function(e){
+  $(".container").on("click", ".task_details", function(e){
       e.stopPropagation();
   });
-  $('.new_task_container').click(function(e){
+  $(".new_task_container").click(function(e){
       e.stopPropagation();
   });  
 

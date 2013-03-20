@@ -1,10 +1,7 @@
 <%= link_to "New Task", new_task_url, id: "new_link", remote: true %>
 
 <div class="new_task_container ui-widget-content ui-corner-all">
-  <h3>New Task</h3>
-  <div id="content">
-    <%= render "form_ajax", task: @task %>
-  </div>
+  <%= render "form_ajax", task: @task %>
 </div>
 
 <% Task::STATUS_LEVELS.each do |status| %>

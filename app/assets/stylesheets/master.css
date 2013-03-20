@@ -104,6 +104,7 @@ a:focus {
 #task_description {
   height: 100px;
 }
+
 /****************/
 /* Task Details */
 /****************/
@@ -153,8 +154,12 @@ a:focus {
 }
 
 /* Form Fields */
-#datepicker {
+.datepicker {
   width: 115px;
+}
+.input-append,
+.input-prepend {
+  display: block;
 }
 
 .field_with_errors {
@@ -232,6 +237,15 @@ a:focus {
   color: #1DD83C;  
 }
 
+/*****************/
+/* Miscellaneous */
+/****************/
+
+.btn,
+.btn:hover,
+.btn:focus {
+  color: #00163F;
+}
 
 /*
   green- #1DD83C

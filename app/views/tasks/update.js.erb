@@ -1,1 +1,2 @@
-$('#item_<%= @task.id %>').replaceWith("<%= j render('tasks_list', item: @task) %>");
+$(".task_details").hide( "slide", {direction: "right"}, 800 );
+$("#item_<%= @task.id %>").replaceWith("<%= j render('tasks_list', item: @task) %>");
