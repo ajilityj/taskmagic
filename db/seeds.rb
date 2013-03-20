@@ -69,7 +69,7 @@ tasks.each do |task_hash|
   t = Task.new
   t.title = "Random Task ##{rand(1000)}"
   t.description = ""
-  t.due_date = rand(2.years).from_now
+  t.due_date = rand(1.years).from_now
   t.priority = rand(1..5)
   t.status = task_hash[:status]
   t.platform_id = Platform.all.sample(1).first.id

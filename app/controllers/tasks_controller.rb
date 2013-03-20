@@ -3,7 +3,11 @@ class TasksController < ApplicationController
   before_filter :require_login
   
   def index
-    @tasks = Task.order('priority asc, due_date desc').all
+    if params[:user_id]
+      @tasks = Task.order('priority asc, due_date desc').where(:user_id => params[:user_id])
+    else
+      @tasks = Task.order('priority asc, due_date desc').all
+    end
     @task = Task.new
   end
   

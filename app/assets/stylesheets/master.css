@@ -16,10 +16,6 @@ select:focus {
   outline: none;
   width: auto;
 }
-table {
-  position: relative;
-  z-index: 1;
-}
 h2,
 h3 {
   background: #00163F;
@@ -72,6 +68,10 @@ a:focus {
 /*************/
 /* Task List */
 /*************/
+.container {
+  position: relative;
+  z-index: 1;
+}
 .table {
   margin-bottom: 50px;
 }
@@ -107,10 +107,8 @@ a:focus {
 /****************/
 /* Task Details */
 /****************/
-.ui-widget-content {
-/*    background: url("images/ui-bg_flat_75_ffffff_40x100.png") repeat-x scroll 50% 50% #FFFFFF;
-    border: 1px solid #AAAAAA;
-    color: #222222;*/
+.edit_task {
+  display: none;
 }
 .new_task_container,
 .task_details {
@@ -119,7 +117,7 @@ a:focus {
   min-width: 360px;
   height: 100%;
   position: absolute;
-  right: 10px;
+  right: 0;
   z-index: 9999;
   border-radius: 10px !important;
 }

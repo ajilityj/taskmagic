@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_url
+      redirect_to user_tasks_url(user)
     else
       redirect_to root_url, notice: "Email or password is invalid."
     end

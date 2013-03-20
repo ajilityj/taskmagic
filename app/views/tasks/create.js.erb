@@ -1,3 +1,8 @@
 $(".new_task_container").hide( "slide", {direction: "right"}, 800 );
+
+
+$(".container").prepend("<div id='<%= @task.id %>' class='task_details ui-widget-content ui-corner-all'><%= j render('task_show', item: @task) %></div>");
+
 $(".table#<%= @task.status %>").prepend("<%= j render('tasks_list', item: @task) %>");
+
 $("#new_task")[0].reset();
