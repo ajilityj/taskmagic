@@ -8,43 +8,28 @@
 
 <div id="content">
 
-  <div class="form_detail">
-    <span>Platform:</span>
-        <%= item.platform.try(:name) %>
-  </div>
+  Platform: <%= item.platform.try(:name) %>
 
-  <div class="form_detail">
-    <span>Priority:</span>
-    <%= item.priority_name.capitalize %>
-  </div>
+  Priority: <%= item.priority_name.capitalize %>
 
-  <div class="form_detail">
-    <span>Assignee:</span>
-    <%= item.user.name %>
-  </div>
+  Assignee: <%= item.user.name %>
 
-  <div class="form_detail">
-    <span>Status:</span>
-    <%= item.status.capitalize %>
-  </div>
+  Status: <%= item.status.capitalize %>
 
-  <div class="form_detail">
-    <span>Due Date:</span>
+  Due Date:
     <% if item.due_date.present? %>
       <%= item.due_date.strftime("%A, %B %-d, %Y") %>
     <% end %>
-  </div>
 
-  <div class="form_detail">
-    <span>Description:</span>
-    <%= item.description %>
-  </div>
+  Description: <%= item.description %>
 
-  <%= link_to "Edit Task", edit_item_url(item), class: "btn", id: "edit_link" %>
+  <%= link_to "Edit Task", "#", class: "btn edit_link", id: "#{item.id}" %>
+  <%= link_to "Cancel", "#", class: "cancel_show_link" %>
+
   <% if admin_user %>
     <%= link_to "Delete Task", item, method: :delete, remote: true, class: "btn" %>
   <% end %>
-  <%= link_to "Cancel", "#", id:"cancel_link" %>
+  
 
   <p class="timestamp">
     <% if item.created_at != item.updated_at %>

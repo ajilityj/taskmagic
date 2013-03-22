@@ -4,6 +4,12 @@
   <%= render "form_ajax", task: @task %>
 </div>
 
+<% @tasks.each do |task| %>
+  <div class="task_details <%= task.id %> ui-widget-content ui-corner-all">
+    <%= render "task_show", item: task %>
+  </div>
+<% end %>
+
 <% Task::STATUS_LEVELS.each do |status| %>
   <h2><%= status.capitalize %></h2>
   <table class="table" id="<%= status %>">

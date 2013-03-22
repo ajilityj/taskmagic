@@ -1,5 +1,5 @@
 function showTaskDetails (id) {
-  $(".task_details#"+id).show( "slide", {direction: "right"}, 800);
+  $(".task_details."+id).show( "slide", {direction: "right"}, 800);
 }
 function hideTaskDetails() {
   $(".task_details").hide( "slide", {direction: "right"}, 800);
@@ -26,7 +26,7 @@ $(function() {
   $(".container").on("click", ".task_title", function() {
       var item_id = $(this).attr("id");
 
-      if ($(".task_details#"+item_id).is(":visible")) {
+      if ($(".task_details."+item_id).is(":visible")) {
         hideTaskDetails();
       }
       else {
@@ -37,7 +37,7 @@ $(function() {
       return false;
   });
 
-  $(".task_details #cancel_link").click(function() {
+  $(".task_details .cancel_show_link").click(function() {
     hideTaskDetails();
     return false;
   });
@@ -49,8 +49,9 @@ $(function() {
     return false;
   });
   
-  $(".new_task_container #cancel_link").click(function() {
+  $(".cancel_form_link").click(function() {
     hideNewTask();
+    $(".edit_task").hide();
     return false;
   });
 
@@ -68,5 +69,11 @@ $(function() {
   $(".new_task_container").click(function(e){
       e.stopPropagation();
   });  
+
+  // Open Form on Edit
+  $(".edit_link").click(function () {
+    var item_id = $(this).attr("id");
+    $("#edit_task_"+item_id).show();
+  });
 
 });

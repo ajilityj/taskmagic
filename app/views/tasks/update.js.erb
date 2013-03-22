@@ -1,2 +1,4 @@
-$(".task_details").hide( "slide", {direction: "right"}, 800 );
+$(".edit_task").hide();
+$(".task_details.<%= @task.id %>").replaceWith("<div class='task_details <%= @task.id %> ui-widget-content ui-corner-all'><%= j render('task_show', item: @task) %></div>");
+$(".task_details.<%= @task.id %>").show();
 $("#item_<%= @task.id %>").replaceWith("<%= j render('tasks_list', item: @task) %>");
